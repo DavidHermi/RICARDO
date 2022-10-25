@@ -1,0 +1,46 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        File archivo = new File("/home/dam2a/IdeaProjects/primitivewritechars/texto5.txt");
+        DataOutputStream escribirArchivo = new DataOutputStream(new FileOutputStream(archivo));
+        DataInputStream lerArquivo = new DataInputStream(new FileInputStream(archivo));
+       
+        int i = 0 ;
+
+
+        do {
+
+            System.out.println("Escribindo: O tempo está xélido");
+            escribirArchivo.writeChars("O tempo esta xelido");
+            System.out.println("Tamaño do ficheiro: " + escribirArchivo.size());
+            i++;
+        } 
+
+        while (i<3) ;
+
+        escribirArchivo.close();
+        int b;
+        while ((b = lerArquivo.available()) != 0)
+
+        {
+
+            System.out.println("Quedan por ler " + b + " bytes");
+            char cadea = lerArquivo.readChar();
+            System.out.println(cadea);
+
+        }
+        System.out.println("Xa non queda nada por ler");
+        lerArquivo.close();
+
+
+
+
+
+    }
+}
+
+
+
+
